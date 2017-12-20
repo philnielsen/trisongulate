@@ -1,0 +1,7 @@
+version: '3'
+services:
+  trisongulate:
+    build: .
+    env_file:
+      - local.env
+    command: 0zlTLKnLY5hYur9w2hPLqB 7bFOkwjxOcGaw6ZULE58Mh 5VS7aJFWhrm5U4gO7wHbVB
