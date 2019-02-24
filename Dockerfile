@@ -1,18 +1,10 @@
-FROM golang:latest AS builder
+FROM golang:1.11
 
-ENV DEP_VERSION=v0.3.2
-
-RUN curl -fsSL -o /usr/local/bin/dep https://github.com/golang/dep/releases/download/${DEP_VERSION}/dep-linux-amd64 && chmod +x /usr/local/bin/dep
-
-RUN mkdir -p /go/src/github.com/trisongulate
-WORKDIR /go/src/github.com/trisongulate
-
-COPY Gopkg.toml Gopkg.lock ./
-# copies the Gopkg.toml and Gopkg.lock to WORKDIR
-
-RUN dep ensure -vendor-only
+RUN mkdir -p /trisongulate
+WORKDIR /trisongulate
 
 ADD . .
-RUN go install .
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 
-ENTRYPOINT [ "/go/bin/trisongulate" ]
+ENTRYPOINT [ "/trisongulate/trisongulate" ]

@@ -4,11 +4,10 @@ Take three songs and recommend a playlist of songs.
 
 ### To Run
 
-1. Install [dep](https://github.com/golang/dep)
-1. `dep ensure`
-1. fill in local.env with Spotify creds
-1. `docker-compose up --build`
-1. Enjoy those tunes that are spit out!
+1. `go build ./..`
+2. fill in local.env with Spotify creds
+3. `docker-compose up --build`
+4. Enjoy those tunes that are spit out!
 
 #### Awesome Libraries Used
 
