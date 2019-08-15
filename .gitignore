@@ -10,7 +10,10 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-#don't show this stuff
+# don't show this stuff
 local.env
 
 .vscode/*
+
+# Don't commit default go binary
+trisongulate
