@@ -1,12 +1,11 @@
 module github.com/philnielsen/trisongulate
 
 require (
-	github.com/golang/protobuf v1.4.2 // indirect
-	github.com/zmb3/spotify v0.0.0-20200814173021-9bec46940cc0
-	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
-	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
-	google.golang.org/appengine v1.6.6 // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
+	github.com/golang/protobuf v1.4.3 // indirect
+	github.com/zmb3/spotify v1.1.1
+	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 // indirect
+	golang.org/x/oauth2 v0.0.0-20210220000619-9bb904979d93
+	google.golang.org/appengine v1.6.7 // indirect
 )
 
-go 1.15
+go 1.16
