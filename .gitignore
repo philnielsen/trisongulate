@@ -16,4 +16,4 @@ local.env
 .vscode/*
 
 # Don't commit default go binary
-trisongulate
+dist/
