@@ -58,11 +58,15 @@ func main() {
 	}
 
 	//Get Recs from Spotify
-	recs, err := client.GetRecommendations(seeds, nil, nil)
+	result, err := client.GetRecommendations(seeds, nil, nil)
 	if err != nil {
-		log.Fatalf("couldn't get Recs: %v", err)
+		log.WithFields(log.Fields{
+			"seeds":  seeds,
+			"result": result,
+			"error":  err,
+		}).Fatal("Couldn't Get Recs")
 	}
-	for _, recommendations := range recs.Tracks {
+	for _, recommendations := range result.Tracks {
 		fmt.Println("  ", recommendations.Name, " ", recommendations.Artists)
 	}
 
@@ -70,13 +74,25 @@ func main() {
 
 func searchIDs(spot spotify.Client, trackName string, c chan spotify.ID, waitGroup *sync.WaitGroup) {
 	defer waitGroup.Done()
+	log.WithFields(log.Fields{
+		"track_name": trackName,
+	}).Debug("Now Processing Search")
 	log.Debugf("now processing: %v\n", trackName)
 	result, err := spot.Search(trackName, spotify.SearchType(spotify.SearchTypeTrack))
 	if err != nil {
-
+		log.WithFields(log.Fields{
+			"track_name": trackName,
+			"result":     result,
+			"error":      err,
+		}).Fatal("Failed search")
 	}
 
-	log.Debug("Search Result has %d total tracks", result.Tracks.Total)
+	log.WithFields(log.Fields{
+		"track_name":    trackName,
+		"result":        result,
+		"total_results": result.Tracks.Total,
+	}).Debug("Search Result Retrieved")
+
 	c <- result.Tracks.Tracks[0].ID
 
 }
