@@ -49,7 +49,10 @@ var serverCmd = &cobra.Command{
 		// 	log.Fatal(err)
 		// }
 		// fmt.Fprintf(w, "Hello: %s", user.DisplayName)
-		http.ListenAndServe(":8080", nil)
+		err = http.ListenAndServe(":8080", nil)
+		if err != nil {
+			log.Fatal("Error Starting Server")
+		}
 
 		// use the client to make calls that require authorizatio
 	},

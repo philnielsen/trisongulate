@@ -44,12 +44,13 @@ func Search(w http.ResponseWriter, r *http.Request, spot localspot.Trisongulate)
 		return
 	}
 
-	r.ParseForm()
+	err := r.ParseForm()
+	if err != nil {
+		log.Fatal("Error Parsing Form Data")
+	}
 	var trackNames []string
 	for _, values := range r.Form { // range over map
-		for _, value := range values { // range over []string
-			trackNames = append(trackNames, value)
-		}
+		trackNames = append(trackNames, values...)
 	}
 
 	log.WithFields(log.Fields{
