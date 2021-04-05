@@ -25,6 +25,14 @@
             {{range $artist := $artists}}
                 <p class="card-text">{{$artist.Name}}</p>
             {{end}}
+            <div class="col-sm-4 col-sm-offset-4 embed-responsive">
+            <audio class="embed-responsive-item"
+            controls
+                src="{{$track.SimpleTrack.PreviewURL}}">
+                Your browser does not support the
+            <code>audio</code> element.
+            </audio>
+            </div>
         </div>
         </div>
         </div>
