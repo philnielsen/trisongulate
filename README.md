@@ -2,12 +2,20 @@
 
 Take three songs and recommend a playlist of songs.
 
-### To Run
+# Running UI
 
-1. `go install ./..`
-2. fill in local.env with Spotify creds
-3. `trisongulate "ramble on" "baba o'riley" "we will rock you"`
-4. Enjoy those tunes that are spit out!
+1. `go install ./...`
+1. fill in a `local.env` with Spotify creds
+1. `trisongulate server`
+1. navigate to `http://localhost:8080/` in your browser
+1. Search for tunes!
+
+### To Run Headless
+
+1. `go install ./...`
+1. fill in local.env with Spotify creds
+1. `trisongulate -t "ramble on" -t "baba o'riley" -t "we will rock you"`
+1. Enjoy those tunes that are spit out!
 
 #### Awesome Libraries Used
 
