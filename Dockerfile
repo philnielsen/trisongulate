@@ -1,4 +1,4 @@
-FROM golang:1.17.1 AS builder
+FROM golang:1.17.2 AS builder
 
 RUN mkdir -p /trisongulate
 WORKDIR /trisongulate
